@@ -1,0 +1,80 @@
+
+.main-page{
+    background-color: #c6f6d5;
+
+}
+.Logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoimg {
+  height: 100px;
+  margin-right: 10px;
+}
+.menu-icon{
+  width: 200px;
+}
+
+.TextLogo a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    flex: 1;
+    align-items: center; 
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2e8b57; /* Color verde similar a EcoTips */
+}
+
+.search-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 80%;
+    max-width: 500px;
+    background-color: #f5f5f5;
+    border-radius: 20px;
+    padding: 1rem 1rem;
+}
+
+.search-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    margin-left: 0.5rem;
+    outline: none;
+}
+
+.menu-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
