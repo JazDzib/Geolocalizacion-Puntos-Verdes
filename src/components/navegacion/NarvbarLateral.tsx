@@ -1,10 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import '../navegacion/NarvbarLateral.css'
+import { Link } from 'react-router-dom';
+import '../navegacion/NarvbarLateral.css';
 
-interface Props {
-  onClose: () => void;
-}
 
 const NarvbarLateral = () => {
   return (

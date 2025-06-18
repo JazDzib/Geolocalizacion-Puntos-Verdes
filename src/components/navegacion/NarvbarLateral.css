@@ -2,7 +2,7 @@
     width: 240px;
     background-color: green;
     position: absolute;
-    height: 88vh;
+    height: calc(100vh - 132px);
     padding: 0 30px;
     transition: all 1s;
     right: 0;

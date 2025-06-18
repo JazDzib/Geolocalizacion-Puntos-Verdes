@@ -1,11 +1,12 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet"; 
 import "leaflet/dist/leaflet.css";
+import './MapView.css'
 
 
 const MapView = ( ) => {
    return(
-    <div  className="map-container" >
+    <div  className="mapa-container" >
       <MapContainer center={{ lat: 21.145477, lng: -88.153592 }} zoom={13} >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

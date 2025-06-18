@@ -1,12 +1,25 @@
 import React from 'react'
-import Narvbar from '../components/navegacion/Narvbar'
-import MapView from '../components/geolocalizacion/MapView'
+import Narvbar from '../components/navegacion/Narvbar';
+import PuntoVerdeCard from '../components/geolocalizacion/PuntoVerdeCard';
+import '../router/Geolocalization.css';
+import MapCard from '../components/geolocalizacion/MapCard';
 const Geolocalization = () => {
   return (
-    <div className=''>
-        <Narvbar/>
-       <MapView/>
-    </div>
+    <>
+      <Narvbar/>
+      <div className='geolocalization-conteiner'>
+        <div className='content-container'>
+          <div className='columna-izquierda'>
+            <MapCard/>
+          </div>
+          <div className='columna-derecha'>
+              <PuntoVerdeCard/>
+          </div>
+        </div>    
+      </div>
+    </>
+    
+    
   )
 }
 
