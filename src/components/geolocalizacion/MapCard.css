@@ -12,7 +12,7 @@
 
 .map-view-container{
     width: 100%;
-   max-height: 600px;
+   max-height: 50vh;
   min-height: 300px; 
   border-radius: 12px;
   overflow: hidden;
