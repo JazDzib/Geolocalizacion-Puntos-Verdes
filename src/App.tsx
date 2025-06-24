@@ -1,11 +1,21 @@
 
 import './App.css';
-import MapView from './components/MapView';
-
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import Home from './router/Home';
+import Geolocalization from './router/Geolocalization';
 
 function App() {
   return (
-    <MapView/>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/map" element={<Geolocalization />}/>    
+      </Routes>
+    </Router>
+    
+   
+
+    
   );
 }
 
