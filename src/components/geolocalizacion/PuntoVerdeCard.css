@@ -56,3 +56,10 @@
   outline: none;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
 }
+
+.punto-information{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

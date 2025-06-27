@@ -3,37 +3,42 @@ import Narvbar from '../components/navegacion/Narvbar';
 import PuntoVerdeCard from '../components/geolocalizacion/PuntoVerdeCard';
 import '../router/Geolocalization.css';
 import MapCard from '../components/geolocalizacion/MapCard';
+import { PuntoVerdeDTO } from '../types/PuntoVerdeDTO';
+import { useUbication } from '../hooks/useUbication';
+import { getPuntosVerde, puntoVerdeMasCercano } from '../services/PuntosVerdeService';
+
+
 const Geolocalization = () => {
+   const { coordenadas } = useUbication();
+  const [puntoSeleccionado, setPuntoSeleccionado] = useState<PuntoVerdeDTO | null>(null);
+  const [puntos, setPuntos]  = useState<PuntoVerdeDTO[]>([]);
 
-  const [state, setState ] = useState({
-    longitude : 0,
-    latitude : 0
-  })
-
+  // Carga inicial de puntos y selección del más cercano
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      function (position){
-        setState({
-          longitude : position.coords.latitude,
-          latitude : position.coords.longitude
-        })
-      }, 
-      function (error){
-        console.log(error);
-      },
-      {enableHighAccuracy: true}
-    )
-  })
+    getPuntosVerde()
+      .then((data) => {
+        setPuntos(data);
+        if (coordenadas) {
+          const masCercano = puntoVerdeMasCercano(coordenadas, data);
+          setPuntoSeleccionado(masCercano);
+        }
+      })
+      .catch(console.error);
+  }, [coordenadas]);
+        
+         
+
   return (
     <>
       <Narvbar/>
       <div className='geolocalization-conteiner'>
         <div className='content-container'>
           <div className='columna-izquierda'>
-            <MapCard/>
+            <MapCard  puntos={puntos} 
+              onMarkerClick={setPuntoSeleccionado} />
           </div>
           <div className='columna-derecha'>
-              <PuntoVerdeCard/>
+              <PuntoVerdeCard  punto={puntoSeleccionado}/>
           </div>
         </div>    
       </div>

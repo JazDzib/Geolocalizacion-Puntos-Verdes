@@ -8,7 +8,7 @@ export const useUbication =() => {
 
     
     const defaultCoords: CoordenadasDTO = {
-        latitude: 20.993549450478238,
+        latitud: 20.993549450478238,
         longitud: -89.62749389964718
     };
 
@@ -23,7 +23,7 @@ export const useUbication =() => {
 
         const ubicationAcces = (position: GeolocationPosition) => {     
             setLocationInfo({
-                latitude: position.coords.latitude,
+                latitud: position.coords.latitude,
                 longitud: position.coords.longitude
             });
             setIsLoading(false);
@@ -39,13 +39,13 @@ export const useUbication =() => {
         
         navigator.geolocation.getCurrentPosition(ubicationAcces, ubicationFaild,{
             enableHighAccuracy: true,
-            timeout: 10000,
+            
             maximumAge: 0 
         });
     }, []);
 
     return {
-        coordinates: locationInfo || defaultCoords, // Siempre devuelve coordenadas (las default o las del usuario)
+        coordenadas: locationInfo || defaultCoords, // Siempre devuelve coordenadas (las default o las del usuario)
         error: locationError,
         isLoading
     };
