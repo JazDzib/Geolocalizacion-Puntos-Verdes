@@ -9,22 +9,25 @@ import { getPuntosVerde, puntoVerdeMasCercano } from '../services/PuntosVerdeSer
 
 
 const Geolocalization = () => {
-   const { coordenadas } = useUbication();
+  const { coordenadas, isLoading, error } = useUbication();
   const [puntoSeleccionado, setPuntoSeleccionado] = useState<PuntoVerdeDTO | null>(null);
   const [puntos, setPuntos]  = useState<PuntoVerdeDTO[]>([]);
-
+   const [hasFetched, setHasFetched] = useState(false);
+  
   // Carga inicial de puntos y selección del más cercano
   useEffect(() => {
-    getPuntosVerde()
-      .then((data) => {
-        setPuntos(data);
-        if (coordenadas) {
+     // Solo hacer fetch si tenemos coordenadas y no está cargando
+    if (!isLoading && coordenadas) {
+      getPuntosVerde()
+        .then((data) => {
+          setPuntos(data);
           const masCercano = puntoVerdeMasCercano(coordenadas, data);
           setPuntoSeleccionado(masCercano);
-        }
-      })
-      .catch(console.error);
-  }, [coordenadas]);
+        })
+        .catch(console.error);
+    }
+  }, [coordenadas, isLoading]);
+  
         
          
 
