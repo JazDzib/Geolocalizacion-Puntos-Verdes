@@ -2,51 +2,52 @@ import { useEffect, useState } from "react";
 import { CoordenadasDTO } from "../types/CoordenadasDTO";
 
 export const useUbication =() => {
-    const [locationInfo, setLocationInfo] = useState<CoordenadasDTO | null>(null);
+    //const [locationInfo, setLocationInfo] = useState<CoordenadasDTO | null>(null);
     const [locationError, setLocationError] = useState<string | null>(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false); 
 
     
-    const defaultCoords: CoordenadasDTO = {
-        latitud: 20.993549450478238,
-        longitud: -89.62749389964718
-    };
-
+   const [locationInfo, setLocationInfo] = useState<CoordenadasDTO>({
+    latitud: 20.993549450478238, // Valores por defecto iniciales
+    longitud: -89.62749389964718
+  });
     useEffect(() => {
-        
-        if (!navigator.geolocation) {
-            setLocationError("Geolocalización no está disponible en el navegador");
-            setLocationInfo(defaultCoords);
-            setIsLoading(false);
-            return;
-        }
 
-        const ubicationAcces = (position: GeolocationPosition) => {     
-            setLocationInfo({
+        const ubicationAcces = (position: GeolocationPosition) => {    
+             
+            setLocationInfo({ 
                 latitud: position.coords.latitude,
                 longitud: position.coords.longitude
             });
-            setIsLoading(false);
+            setIsLoading(false)
         };
 
         const ubicationFaild = (error: GeolocationPositionError) => {
             setLocationError(error.message);
-            setLocationInfo(defaultCoords);
             setIsLoading(false);
         };
 
-        setIsLoading(true);
-        
-        navigator.geolocation.getCurrentPosition(ubicationAcces, ubicationFaild,{
+        const solicitaUbicacion = () =>{
+            if (!navigator.geolocation) { //si no autorizo la ubicacion 
+            setLocationError("Geolocalización no está disponible en el navegador");
+            return;
+            }
+            setIsLoading(true)
+
+            navigator.geolocation.getCurrentPosition(ubicationAcces , ubicationFaild, {
             enableHighAccuracy: true,
-            
             maximumAge: 0 
-        });
+            });
+        }
+
+        solicitaUbicacion();
+        
+        
     }, []);
 
     return {
-        coordenadas: locationInfo || defaultCoords, // Siempre devuelve coordenadas (las default o las del usuario)
-        error: locationError,
+        locationInfo, // Siempre devuelve coordenadas (las default o las del usuario)
+        locationError,
         isLoading
     };
 };

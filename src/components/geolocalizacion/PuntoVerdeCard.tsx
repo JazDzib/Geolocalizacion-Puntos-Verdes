@@ -15,7 +15,7 @@ const PuntoVerdeCard: React.FC<PuntoVerdeCardProps > =({punto})=> {
         </div>
       </div>
     );
-  }
+    }
 
     return(
     <div className="container-punto-card">
@@ -30,12 +30,7 @@ const PuntoVerdeCard: React.FC<PuntoVerdeCardProps > =({punto})=> {
             <span> <b>Direccion: </b>{punto.direccion}</span>
             <span> <b>Categoria: </b>{punto.tipo_residuo}</span>
         </div>
-        <div className="comentarios">
-            <p>Aquí se mostrarán los comentarios del punto.</p>
-        </div>
-        <div className="comentario-card">
-            <input className="comment" type="text" name="comment" id="comment" placeholder="Comenta..." />
-        </div>
+        
     </div>
 
     );

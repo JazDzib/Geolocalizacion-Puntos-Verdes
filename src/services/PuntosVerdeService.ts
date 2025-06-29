@@ -10,12 +10,18 @@ const password = 'holabola';
 const credentials = btoa(`${username}:${password}`);
 
 export const getPuntosVerde = async (): Promise<PuntoVerdeDTO[]> => {
-  const response = await axios.get<PuntoVerdeDTO[]>(baseURL, {
+   try{
+    const response = await axios.get<PuntoVerdeDTO[]>(baseURL, {
     headers: {
       Authorization: `Basic ${credentials}`
     }
   });
   return response.data;
+   } catch(e){
+    console.log(e)
+    return[];
+   }
+  
 };
 
 export const puntoVerdeMasCercano = (coordenada : CoordenadasDTO, puntoVerde : PuntoVerdeDTO[]) =>{
@@ -28,5 +34,20 @@ export const puntoVerdeMasCercano = (coordenada : CoordenadasDTO, puntoVerde : P
   return puntoVerde.reduce((previo , actual) => 
     distancia(coordenada, actual) < distancia(coordenada, previo) ? actual : previo
   );
+}
+
+export const postPuntoVerde = async(punto : PuntoVerdeDTO):Promise<PuntoVerdeDTO[]> => {
+  try{
+    const response= await axios.post(`${baseURL}/insertPV`, punto, {
+    headers: {
+      Authorization: `Basic ${credentials}`
+    }
+  });
+  return response.data;
+  }catch(e){
+    console.log(e);
+    return[]
+  }
+  
 }
 

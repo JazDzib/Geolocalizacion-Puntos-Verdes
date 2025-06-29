@@ -1,6 +1,6 @@
 .narvbar-lateral{
     width: 240px;
-    background-color: green;
+    background: linear-gradient(to bottom, #45DF88, #03A688);
     position: absolute;
     height: calc(100vh - 132px);
     padding: 0 30px;
@@ -17,7 +17,7 @@ ul li {
 }
 
 ul li .ruta{
-    color: aliceblue;
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 16px;
     display: block;
@@ -25,7 +25,3 @@ ul li .ruta{
     border-radius: 10px;
 }
 
-ul li .ruta:hover,
-ul li .ruta.active{
-    background: rgb(128, 73, 0);
-}

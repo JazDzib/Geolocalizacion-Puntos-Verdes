@@ -10,3 +10,10 @@
   overflow: hidden;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
+.leaflet-control-container {
+  z-index: 0 !important; /* o 1 */
+}
+
+.leaflet-bottom.leaflet-right {
+  display: none; /* para ocultar el texto de “Leaflet | OpenStreetMap…” */
+}

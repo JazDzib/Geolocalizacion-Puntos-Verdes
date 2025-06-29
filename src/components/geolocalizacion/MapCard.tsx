@@ -18,17 +18,18 @@ const MapCard: React.FC<MapCardProps> = ({ puntos, onMarkerClick }) => {
 
     const descripcion = "Un centro de reciclaje ubicado en una zona urbana que recibe y procesa residuos reciclables. Su objetivo es reducir la contaminación y promover la reutilización de materiales";
     const direccion ="";
-      const { coordenadas, error, isLoading } = useUbication();
+      const { locationInfo, locationError, isLoading } = useUbication();
       
     
        if (isLoading) {
         return <div>Cargando ubicación...</div>;  
       }
+      
   return (
     <div className='map-card-container'>
         <h3>Centros de reciclaje cerca de tí</h3>
         <div className='map-view-container'>
-             <MapContainer center={[coordenadas?.latitud , coordenadas?.longitud ]} zoom={14} >
+             <MapContainer center={[locationInfo?.latitud , locationInfo?.longitud ]} zoom={14} zoomControl={false}>
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                   attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
