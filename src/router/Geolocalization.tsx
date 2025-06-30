@@ -64,7 +64,7 @@ const Geolocalization = () => {
               <AgregarPunto mostrarForm = {setActiveFormulario}/>
           </div>
         </div> 
-           {activeFormulario && <FormularioAgregar ocultarForm = {setActiveFormulario}/>}
+           {activeFormulario && <FormularioAgregar ocultarForm = {setActiveFormulario}/>} 
       </div>
      
     </>

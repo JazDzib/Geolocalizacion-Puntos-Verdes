@@ -1,5 +1,5 @@
 export interface PuntoVerdeDTO {
-   id: number;
+   id?: number;
   nombre: string;
   descripcion: string;
   latitud: number;

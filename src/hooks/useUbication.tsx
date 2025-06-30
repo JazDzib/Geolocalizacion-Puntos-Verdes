@@ -5,12 +5,14 @@ export const useUbication =() => {
     //const [locationInfo, setLocationInfo] = useState<CoordenadasDTO | null>(null);
     const [locationError, setLocationError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState(false); 
+    const [hasRealUbication, setHasRealUbication] = useState(false);
 
     
    const [locationInfo, setLocationInfo] = useState<CoordenadasDTO>({
-    latitud: 20.993549450478238, // Valores por defecto iniciales
-    longitud: -89.62749389964718
-  });
+        latitud: 20.993549450478238,
+        longitud: -89.62749389964718
+        });
+
     useEffect(() => {
 
         const ubicationAcces = (position: GeolocationPosition) => {    
@@ -19,6 +21,7 @@ export const useUbication =() => {
                 latitud: position.coords.latitude,
                 longitud: position.coords.longitude
             });
+            setHasRealUbication(true);
             setIsLoading(false)
         };
 
@@ -48,6 +51,7 @@ export const useUbication =() => {
     return {
         locationInfo, // Siempre devuelve coordenadas (las default o las del usuario)
         locationError,
-        isLoading
+        isLoading,
+        
     };
 };
