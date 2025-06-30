@@ -75,7 +75,7 @@ const FormularioAgregar = ({ocultarForm}: Props) => {
             <input type="number" placeholder="Longitud" name='longitud' value={data.longitud} onChange={handleChange} required/>
             <label >  Categoria: </label>
             <select className='categorias' name='tipo_residuo' value={data.tipo_residuo} onChange={handleChange} required>
-              <option value={"PAPEL"} >Papel</option>
+              <option value={"PAPEL"} >Papel o </option>
               <option value={"VIDRIO"}>Vidrio</option>
               <option value={"PLASTICO"}>Plastico</option>
               <option value={"ORGANICO"}>Organico</option>
