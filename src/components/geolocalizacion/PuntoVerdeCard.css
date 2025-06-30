@@ -19,7 +19,7 @@
 
 .imagen-punto img {
   width: 100%;
-  max-height: 400px;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 12px;
   display: block;
@@ -55,4 +55,11 @@
   border-color: #4caf50;
   outline: none;
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+.punto-information{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
