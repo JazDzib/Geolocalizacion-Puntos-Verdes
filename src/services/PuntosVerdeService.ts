@@ -1,9 +1,9 @@
-import {useEffect,useState} from 'react'
 import axios from 'axios';
 import {PuntoVerdeDTO} from '../types/PuntoVerdeDTO';
 import { CoordenadasDTO } from '../types/CoordenadasDTO';
 
-const baseURL = "http://localhost:8080/api/PuntoVerde"
+const apiURL = process.env.REACT_APP_API_URL ?? "";
+const baseURL = `${apiURL}/api/PuntoVerde`
 const username = 'admin';
 const password = 'holabola';
 

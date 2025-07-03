@@ -1,0 +1,41 @@
+services:
+  frontend: 
+    container_name: puntos-verdes-front
+    #image: softwaredevuady/puntos-verdes-front:latest #Un-comment if you want use the image front docker hub, and comment the next 
+    build:
+      context: .
+      args:
+        - REACT_APP_API_URL=http://puntos-verdes-back:8080
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+  backend:
+    container_name: puntos-verdes-back
+    image: softwaredevuady/puntos-verdes-back:latest 
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: postgreSQL #URL is only IP, internally contains port and dialect
+      DB_TABLE_NAME: puntos_verdes
+      DB_USER_NAME: root
+      DB_PASSWORD: SuperSecretPass
+    restart: unless-stopped
+    depends_on:
+      - postgreSQL
+
+
+  postgreSQL:
+    container_name: puntos-verdes-db
+    image: postgres:14-alpine
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=SuperSecretPass
+      - POSTGRES_USER=root
+      - POSTGRES_DB=puntos_verdes
+    
