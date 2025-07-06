@@ -4,8 +4,9 @@ services:
     #image: softwaredevuady/puntos-verdes-front:latest #Un-comment if you want use the image front docker hub, and comment the next 
     build:
       context: .
-      args:
-        - REACT_APP_API_URL=http://puntos-verdes-back:8080
+
+    environment:
+      - REACT_APP_API_URL=http://127.0.0.1:8080
     ports:
       - "80:80"
     depends_on:

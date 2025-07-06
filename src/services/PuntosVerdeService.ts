@@ -2,7 +2,7 @@ import axios from 'axios';
 import {PuntoVerdeDTO} from '../types/PuntoVerdeDTO';
 import { CoordenadasDTO } from '../types/CoordenadasDTO';
 
-const apiURL = process.env.REACT_APP_API_URL ?? "";
+const apiURL = window._env_.REACT_APP_API_URL;
 const baseURL = `${apiURL}/api/PuntoVerde`
 const username = 'admin';
 const password = 'holabola';
