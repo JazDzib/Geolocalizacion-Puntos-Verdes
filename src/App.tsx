@@ -3,13 +3,15 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './router/Home';
 import Geolocalization from './router/Geolocalization';
+import Register from './router/Register';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/map" element={<Geolocalization />}/>    
+        <Route path="/map" element={<Geolocalization />}/>   
+        <Route path="/register" element={<Register/>}/>   
       </Routes>
     </Router>
     
