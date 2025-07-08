@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './router/Home';
 import Geolocalization from './router/Geolocalization';
 import Register from './router/Register';
+import './index.css'; 
+
 
 function App() {
   return (
