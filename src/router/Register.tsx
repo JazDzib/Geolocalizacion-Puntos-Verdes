@@ -1,31 +1,33 @@
 import React from 'react'
 
 import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-
+import FormularioRegistro from '../components/Login/FormularioRegistro';
+import logo from '../assets/recycle.svg'
+import img from '../assets/papelera-de-reciclaje.png'
+import { Link } from 'react-router-dom';
 const Register = () => {
   return (
     <>
-    <form className="flex max-w-md flex-col gap-4">
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="email1">Your email</Label>
+      <div className=' min-h-screen  flex justify-between bg-green-100 '>
+        
+        <div className="w-1/2 bg-white flex flex-col justify-center items-center px-12">
+          <div className="flex items-center gap-2 mb-8 self-start">
+            <img src={logo} alt="Logo" className="h-10 w-10" />
+            <h2 className="text-2xl font-bold text-gray-800">GreenGeo</h2>
+          </div>
+          <div className='register justify-center' >
+              <FormularioRegistro/>
+              
+            
+          </div>        
         </div>
-        <TextInput id="email1" type="email" placeholder="name@flowbite.com" required />
-      </div>
-      <div>
-        <div className="mb-2 block">
-          <Label htmlFor="password1">Your password</Label>
+          
+        <div className="w-1/2 bg-emerald-400 text-white flex flex-col justify-center items-center text-center px-8">
+          <h2 className="text-2xl font-semibold mb-6">Inicia sesión y sé parte del cambio.</h2>
+          <img src={img} alt="Reciclaje" className="w-72 h-auto" />
         </div>
-        <TextInput id="password1" type="password" required />
       </div>
-      <div className="flex items-center gap-2">
-        <Checkbox id="remember" />
-        <Label htmlFor="remember">Remember me</Label>
-      </div>
-      <Button type="submit">Submit</Button>
-    </form>
-    </>
-   
+    </> 
   )
 }
 

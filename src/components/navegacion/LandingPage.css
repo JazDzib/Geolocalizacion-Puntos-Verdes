@@ -1,0 +1,69 @@
+/* LANDING PAGE STYLES */
+
+.Contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 80px;
+  background-color:rgb(255, 255, 255); /* verde muy suave */
+  gap: 40px;
+    min-height: calc(100vh - 132px);
+  flex-wrap: wrap;
+}
+
+.Texto {
+  
+  flex: 1;
+  min-width: 300px;
+  max-width: 700px;
+  color: #333;
+  margin-left: 5%
+}
+
+.Texto p {
+  font-size: 25px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  text-align: justify;
+  color: black;
+}
+
+.Texto span {
+  font-weight: bold;
+  color: #16a34a; /* verde fuerte */
+}
+.ImagenLP {
+  flex: 1;
+  margin-right:5%;
+  min-width: 300px;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ImagenLP img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+ 
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .Contenido {
+    flex-direction: column-reverse;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .Texto {
+    max-width: 100%;
+  }
+
+  .ImagenLP {
+    margin-bottom: 30px;
+  }
+}
