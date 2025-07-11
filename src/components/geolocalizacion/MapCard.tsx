@@ -6,14 +6,13 @@ import { IconLocation } from './IconLocation';
 import { getPuntosVerde, puntoVerdeMasCercano } from '../../services/PuntosVerdeService';
 import { PuntoVerdeDTO } from '../../types/PuntoVerdeDTO';
 import "leaflet/dist/leaflet.css";
-import './MapView.css'
+
 import '../geolocalizacion/MapCard.css'
 
 interface MapCardProps {
   puntos: PuntoVerdeDTO[];  // Array de puntos verdes
   onMarkerClick: (punto: PuntoVerdeDTO) => void;
 }
-
 const MapCard: React.FC<MapCardProps> = ({ puntos, onMarkerClick }) => {
 
     const descripcion = "Un centro de reciclaje ubicado en una zona urbana que recibe y procesa residuos reciclables. Su objetivo es reducir la contaminación y promover la reutilización de materiales";
