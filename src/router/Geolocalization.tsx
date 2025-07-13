@@ -27,6 +27,7 @@ const Geolocalization = () => {
           setPuntos(data);
           const masCercano = puntoVerdeMasCercano(locationInfo, data);
           setPuntoSeleccionado(masCercano);
+          
         })
         .catch(console.error);
     }

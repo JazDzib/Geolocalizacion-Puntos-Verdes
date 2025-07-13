@@ -25,6 +25,7 @@ const Narvbar = () => {
           </div>
           <div className="menu-container">
             {/* Este es el ícono que abre el menú lateral */}
+            
             <FiMenu className="menu-icon" onClick={handleNarvbar} />
           </div>
         </nav>

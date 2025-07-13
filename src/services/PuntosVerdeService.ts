@@ -6,7 +6,7 @@ const apiURL = window._env_.REACT_APP_API_URL;
 const baseURL = `${apiURL}/api/PuntoVerde`
 const username = 'admin';
 const password = 'holabola';
-const token = localStorage.getItem("token")
+
 
 const credentials = btoa(`${username}:${password}`);
 
@@ -42,17 +42,16 @@ export const puntoVerdeMasCercano = (coordenada : CoordenadasDTO, puntoVerde : P
 
 
 export const postPuntoVerde = async(punto : PuntoVerdeDTO):Promise<PuntoVerdeDTO[]> => {
-  if (!token) {
-    console.warn("No hay token disponible para autenticación");
-    return [];
-  }
+  const token = localStorage.getItem("token");
 
   try{
     const response= await axios.post(`${baseURL}/insertPV`, punto, {
     headers: {
       Authorization: `Bearer ${token}`,
     }
+    
   });
+  
   return response.data;
   }catch(e){
     console.log("Error al registrar el punto verde",e);

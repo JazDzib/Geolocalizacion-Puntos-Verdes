@@ -1,9 +1,10 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react'
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { RegisterDTO } from '../../types/Authentication';
-import { authService } from '../../services/AuthenticationSercxe';
+import { authService } from '../../services/AuthenticationService';
 const FormularioRegistro = () => {
+  const navigate = useNavigate( );
   const [usuarioData, setUsuarioData] = useState<RegisterDTO>({
     nombre : "",
     correo: "",
@@ -28,6 +29,7 @@ const FormularioRegistro = () => {
   
       try{
         await authService.register(usuarioData);
+        navigate("/login")
          // cierra el modal
       }catch(e){
         console.error("Error al enviar los datos:", e);
@@ -41,7 +43,7 @@ const FormularioRegistro = () => {
             <form className="flex flex-col gap-4" onSubmit={handleSubmmit}>
                 <div>
                 <Label  htmlFor="nombre" className='!text-black'>Nombre</Label>
-                <TextInput id="nombre" type="text" name='nombre' value={usuarioData.nombre} onChange={handleChange} required />
+                <TextInput className='text-black' id="nombre" type="text" name='nombre' value={usuarioData.nombre} onChange={handleChange} required />
               </div>
               <div>
                 <Label  htmlFor="email" className='!text-black'>Correo</Label>

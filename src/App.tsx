@@ -26,7 +26,7 @@ const customTheme = createTheme({
     field: {
       input: {
         base:
-          "!bg-white text-gray-900 border border-gray-300 focus:ring-red-500 focus:border-red-500",
+          "!bg-white !text-black border border-gray-300 focus:ring-red-500 focus:border-red-500",
       },
     },
   },
