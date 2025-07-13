@@ -26,7 +26,7 @@ const FormularioLogin = () => {
     const handleSubmmit = async(e : FormEvent) =>{
         e.preventDefault();
     
-        console.log('form data subnited: ', usuarioData)
+        console.log('usuario login')
     
         try{
           await authService.login(usuarioData);

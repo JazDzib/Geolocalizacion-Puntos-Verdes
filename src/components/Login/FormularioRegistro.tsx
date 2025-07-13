@@ -25,7 +25,7 @@ const FormularioRegistro = () => {
   const handleSubmmit = async(e : FormEvent) =>{
       e.preventDefault();
   
-      console.log('form data subnited: ', usuarioData)
+      console.log('usuario Registrado')
   
       try{
         await authService.register(usuarioData);
