@@ -7,6 +7,7 @@ const baseURL = `${apiURL}/api/PuntoVerde`
 const username = 'admin';
 const password = 'holabola';
 
+
 const credentials = btoa(`${username}:${password}`);
 
 export const getPuntosVerde = async (): Promise<PuntoVerdeDTO[]> => {
@@ -41,15 +42,19 @@ export const puntoVerdeMasCercano = (coordenada : CoordenadasDTO, puntoVerde : P
 
 
 export const postPuntoVerde = async(punto : PuntoVerdeDTO):Promise<PuntoVerdeDTO[]> => {
+  const token = localStorage.getItem("token");
+
   try{
     const response= await axios.post(`${baseURL}/insertPV`, punto, {
     headers: {
-      Authorization: `Basic ${credentials}`
+      Authorization: `Bearer ${token}`,
     }
+    
   });
+  
   return response.data;
   }catch(e){
-    console.log(e);
+    console.log("Error al registrar el punto verde",e);
     return[]
   }
   

@@ -20,7 +20,7 @@ const PuntoVerdeCard: React.FC<PuntoVerdeCardProps > =({punto})=> {
     return(
     <div className="container-punto-card">
         <div className="nombre-punto">
-            <h3>{punto.nombre}</h3>
+            <span className="nombre"><b>{punto.nombre}</b></span>
         </div>
         <div className="imagen-punto">
             <img alt="imagen punto verde" src={punto.imagen_url}/>

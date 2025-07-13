@@ -15,7 +15,8 @@
   padding: 0.7rem;
   padding-left: 2rem;
    padding-right: 2rem;
-  background-color: #03A688;
+  background-color:   #45DF88;
+;
   color: white;
   border: none;
   border-radius: 10px;
@@ -24,5 +25,5 @@
   transition: background-color 0.3s;
 }
 .agregar:hover{
-  background-color:   #45DF88;
+  background-color:   #03A688;
 }

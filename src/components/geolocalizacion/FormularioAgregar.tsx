@@ -2,23 +2,15 @@ import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import '../geolocalizacion/FormularioAgregar.css'
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { PuntoVerdeDTO } from '../../types/PuntoVerdeDTO';
-import { data, FormEncType } from 'react-router-dom';
+import { data, FormEncType, useNavigate } from 'react-router-dom';
 import { postPuntoVerde } from '../../services/PuntosVerdeService';
 
 type Props = {
   ocultarForm: (value: boolean) => void;
 };
 
-interface FormData{
-  nombre : string,
-    descipcion : string,
-    direccion : string,
-    latitud : number,
-    longitud: number,
-    categoria: string,
-    imagen:string
-}
 const FormularioAgregar = ({ocultarForm}: Props) => {
+  const navigate = useNavigate();
 
   const [data, setData] = useState<PuntoVerdeDTO>({
     nombre: "",
@@ -48,7 +40,8 @@ const FormularioAgregar = ({ocultarForm}: Props) => {
 
     try{
       await postPuntoVerde(data);
-      ocultarForm(false); // cierra el modal
+      ocultarForm(false); 
+      navigate(0);
     }catch(e){
       console.error("Error al enviar los datos:", e);
     }
@@ -75,7 +68,8 @@ const FormularioAgregar = ({ocultarForm}: Props) => {
             <input type="number" placeholder="Longitud" name='longitud' value={data.longitud} onChange={handleChange} required/>
             <label >  Categoria: </label>
             <select className='categorias' name='tipo_residuo' value={data.tipo_residuo} onChange={handleChange} required>
-              <option value={"PAPEL"} >Papel o </option>
+              <option value={""} >Selecciona</option>
+              <option value={"PAPEL"} >Papel o Cartón</option>
               <option value={"VIDRIO"}>Vidrio</option>
               <option value={"PLASTICO"}>Plastico</option>
               <option value={"ORGANICO"}>Organico</option>
