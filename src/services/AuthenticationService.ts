@@ -33,7 +33,7 @@ export function isTokenValid(): boolean {
 export const authService ={
    async login(usuario :LoginDTO): Promise<LoginDTO[]>  {
         try{
-            const response =  await axios.post(`${apiURL}/auth/login` , usuario);
+            const response =  await axios.post(`${apiURL}/api/auth/login` , usuario);
             const token = response.data.token;
             localStorage.setItem("token", token);
 
@@ -46,7 +46,7 @@ export const authService ={
 
     async register(usuario: RegisterDTO): Promise<RegisterDTO[]>  {
         try{
-        const response = await axios.post(`${apiURL}/auth/register`, usuario);
+        const response = await axios.post(`${apiURL}/api/auth/register`, usuario);
         return response.data;
         }catch(e){
             console.log("Error en el registro", e);
